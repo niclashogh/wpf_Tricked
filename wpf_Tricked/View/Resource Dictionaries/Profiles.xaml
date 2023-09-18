@@ -21,7 +21,7 @@
 
     <!--#region ProfileData -->
     <Style TargetType="Image" x:Key="ProfileImg">
-        <Setter Property="Source" Value="/Resources/Tricked_Logo.png"/>
+        <Setter Property="Source" Value="/Resources/Default_Profile.png"/>
         <Setter Property="Height" Value="200"/>
         <Setter Property="VerticalAlignment" Value="Top"/>
         <Setter Property="HorizontalAlignment" Value="Center"/>

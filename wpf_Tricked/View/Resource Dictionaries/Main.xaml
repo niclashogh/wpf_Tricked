@@ -10,7 +10,7 @@
     </Style>
 
     <Style TargetType="Image" x:Key="Icon">
-        <Setter Property="Source" Value="/Resources/Tricked_Logo.png"/>
+        <Setter Property="Source" Value="/Resources/Logo.png"/>
         <Setter Property="Stretch" Value="Fill"/>
         <Setter Property="Margin" Value="2"/>
     </Style>
