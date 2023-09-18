@@ -1,0 +1,25 @@
+﻿<Application x:Class="wpf_Tricked.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:wpf_Tricked"
+             xmlns:views="clr-namespace:wpf_Tricked.View"
+             xmlns:viewmodels="clr-namespace:wpf_Tricked.ViewModel"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+
+        <!--#region Pages -->
+        <DataTemplate DataType="{x:Type viewmodels:TeamsVM}">
+            <views:Teams/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:ProfilesVM}">
+            <views:Profiles/>
+        </DataTemplate>
+
+        <DataTemplate DataType="{x:Type viewmodels:EventsVM}">
+            <views:Events/>
+        </DataTemplate>
+        <!--#endregion-->
+
+    </Application.Resources>
+</Application>

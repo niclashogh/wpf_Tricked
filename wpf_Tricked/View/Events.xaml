@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="wpf_Tricked.View.Events"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpf_Tricked.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--#region Dictionary Resources -->
+    <UserControl.Resources>
+        <ResourceDictionary Source="/View/Resource Dictionaries/Events.xaml"/>
+    </UserControl.Resources>
+    <!--#endregion-->
+    
+    <Grid>
+        <!--#region Grid Definitions-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+        
+        <!--#region Teams-->
+        <Border Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2" Margin="0,5,0,0" CornerRadius="10"/>
+        
+        <StackPanel Grid.Row="0" Grid.ColumnSpan="2">
+            <ItemsControl Margin="10,15,0,10" ItemsSource="{Binding TeamList}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Content="{Binding Name}" FontSize="18" Margin="0,0,10,0" Padding="5,2"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region Edit Event Data (Finish Teams)-->
+        <Border BorderThickness="1" BorderBrush="Gray" Grid.Row="1" Margin="0,10,0,0"/>
+
+        <StackPanel x:Name="EventDataPanel" Orientation="Vertical" Margin="5,15,5,5" Grid.Row="1" Visibility="Visible">
+            <!-- Location -->
+            <TextBlock Text="Location" FontSize="16" FontWeight="SemiBold"/>
+            <TextBox x:Name="LocationBox" TextChanged="TextBox_TextChanged" Style="{StaticResource Location}"/>
+
+            <!-- Date -->
+            <TextBlock Text="Date" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+            <DatePicker x:Name="EventDatePicker" Style="{StaticResource DatePicker}" SelectedDateChanged="EventDatePicker_SelectedDateChanged"/>
+
+            <!-- Time -->
+            <TextBlock Text="Time" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="HourBox" Style="{StaticResource Hour}" TextChanged="TextBox_TextChanged"/>
+                <TextBlock Text=" : " Margin="0,2" FontSize="16"/>
+                <TextBox x:Name="MinBox" Style="{StaticResource Min}" TextChanged="TextBox_TextChanged"/>
+            </StackPanel>
+
+            <!-- Teams -->
+            <TextBlock Text="Teams" FontSize="16" FontWeight="SemiBold" Margin="0,10,0,0"/>
+        </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region Edit Events-->
+        <StackPanel x:Name="EventBtnPanel" Orientation="Vertical" Margin="5" Grid.Row="2">
+            <Button Content="Save" Margin="5" Padding="5" x:Name="SaveBtn" IsEnabled="False"/>
+            <Button Content="Delete" Margin="5" Padding="5" x:Name="DeleteBtn"/>
+            <Button Content="Add new" Margin="5" Padding="5" x:Name="AddBtn"/>
+        </StackPanel>
+        <!--#endregion-->
+         
+        <!--#region List of current dates-->
+        <Border x:Name="EventBorder" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2" Margin="0,0,0,20"/>
+
+        <StackPanel Margin="50,8,50,0" Grid.Column="1" Grid.Row="1" Grid.RowSpan="2">
+            <ListBox x:Name="EventListBox" SelectionChanged="EventListBox_SelectionChanged" Style="{StaticResource EventList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Style="{StaticResource EventListBorder}">
+                            <StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,2">
+                                    <TextBlock Text="Date " FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Date, StringFormat=MMM. dd}" FontSize="14"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="5,2">
+                                    <TextBlock Text="Time " FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Date, StringFormat=HH:mm}" FontSize="14"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal" Margin="10,2">
+                                    <TextBlock Text="Location " FontSize="14" FontWeight="SemiBold"/>
+                                    <TextBlock Text="{Binding Location}" FontSize="14"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        <!--#endregion-->
+    </Grid>
+</UserControl>

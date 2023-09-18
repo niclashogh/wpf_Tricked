@@ -1,0 +1,95 @@
+﻿<UserControl x:Class="wpf_Tricked.View.Profiles"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:wpf_Tricked.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <!--#region Dictionary Resources -->
+    <UserControl.Resources>
+        <ResourceDictionary Source="/View/Resource Dictionaries/Profiles.xaml"/>
+    </UserControl.Resources>
+    <!--#endregion-->
+
+    <Grid x:Name="grid">
+        <!--#region Grid Definitions -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <!--#endregion-->
+
+        <!--#region List of Profiles -->
+        <Border x:Name="ListBorder" Style="{StaticResource ListBorder}"/>
+
+        <StackPanel VerticalAlignment="Top">
+            <ListBox Name="ProfileListBox" SelectionChanged="ProfileListBox_SelectionChanged" Style="{StaticResource ProfileList}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Margin="5">
+                            <!-- Data -->
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding IGN}" FontWeight="Bold" FontSize="14"/>
+                                <TextBlock Text=", " FontSize="14"/>
+                                <TextBlock Text="{Binding Name}" FontSize="14"/>
+                            </StackPanel>
+                            <!-- Devider -->
+                            <StackPanel Orientation="Vertical">
+                                <Border Background="Black" Height="2"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        
+            <Button Click="AddBtn_Click" Style="{StaticResource SaveBtn}" />
+        </StackPanel>
+
+        <!--#endregion-->
+
+        <!--#region Edit Profile Data (Finish TeamBox) -->
+        <Border BorderBrush="Gray" BorderThickness="2" Grid.Column="2" Margin="0,5,0,0"/>
+        <StackPanel x:Name="ProfileDataPanel" Grid.Column="2" Orientation="Vertical" Margin="5" Visibility="Hidden">
+            <Image x:Name="PlayerImg" Style="{StaticResource ProfileImg}"/>
+            <!-- Data -->
+            <TextBox x:Name="IGNBox" TextChanged="TextBox_TextChanged" Style="{StaticResource IGN}"/>
+            <TextBox x:Name="TeamBox" Style="{StaticResource Team}"/>
+            <TextBox x:Name="RoleBox" TextChanged="TextBox_TextChanged" Style="{StaticResource Role}"/>
+
+            <!-- Elo -->
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBox x:Name="EloBox" TextChanged="TextBox_TextChanged" Style="{StaticResource Elo}"/>
+                <TextBlock Style="{StaticResource EloTitle}"/>
+            </StackPanel>
+            <!-- Name -->
+            <TextBox x:Name="NameBox" TextChanged="TextBox_TextChanged" Style="{StaticResource Name}"/>
+        </StackPanel>
+        <!--#endregion-->
+        
+        <!--#region Save & Delete Buttons -->
+        <StackPanel x:Name="ProfileBtnPanel" Grid.Column="2" Style="{StaticResource ProfileBtnPanel}">
+            <Button Content="Save" Style="{StaticResource Buttons}" Click="SaveBtn_Click" IsEnabled="False" x:Name="SaveBtn"/>
+            <Button Content="Delete" Style="{StaticResource Buttons}" Click="RemoveBtn_Click"/>
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Practice-->
+        <StackPanel Grid.Column="1" Orientation="Vertical">
+
+        </StackPanel>
+        <!--#endregion-->
+
+        <!--#region Skills-->
+        <StackPanel Grid.Column="3" Orientation="Vertical">
+
+        </StackPanel>
+        <!--#endregion-->
+    </Grid>
+
+</UserControl>
