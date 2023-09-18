@@ -1,5 +1,5 @@
 # wpf_Tricked
 
-Project type: WPF
-Project Structure: MVVM
-Project Domain: Tricked Managment
+Project type: WPF<br/>
+Project Structure: MVVM<br/>
+Project Domain: Tricked Managment<br/>
